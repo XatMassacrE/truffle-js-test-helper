@@ -7,6 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": ["ethereum", "truffle", "solidity", "helper", "uint test"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/XatMassacrE/truffle-js-test-helper"
+  },
   "author": "Xat_MassacrE <xxat.massacre@gmail.com>",
   "license": "ISC"
 }
