@@ -1,6 +1,6 @@
 {
   "name": "truffle-js-test-helper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This is a modules include some basic functions to help test ethereum smart contract",
   "main": "index.js",
   "scripts": {
