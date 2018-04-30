@@ -1,0 +1,12 @@
+{
+  "name": "truffle-js-test-helper",
+  "version": "1.0.0",
+  "description": "This is a modules include some basic functions to help test ethereum smart contract",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["ethereum", "truffle", "solidity", "helper", "uint test"],
+  "author": "Xat_MassacrE <xxat.massacre@gmail.com>",
+  "license": "ISC"
+}
