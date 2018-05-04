@@ -12,23 +12,35 @@ module.exports = {
 
   addDaysOnEVM: async function(days) {
 		const addSeconds= 60 * 60 * 24 * days
-		const currentBlockTime = web3.eth.getBlock(web3.eth.blockNumber).timestamp
 		await web3.currentProvider.send({jsonrpc: "2.0", method: "evm_increaseTime", params: [addSeconds], id: 0})
 		await web3.currentProvider.send({jsonrpc: "2.0", method: "evm_mine", params: [], id: 0})
 	},
 
   addHoursOnEVM: async function(hours) {
 		const addSeconds = 60 * 60 * hours 
-		const currentBlockTime = web3.eth.getBlock(web3.eth.blockNumber).timestamp
 		await web3.currentProvider.send({jsonrpc: "2.0", method: "evm_increaseTime", params: [addSeconds], id: 0})
 		await web3.currentProvider.send({jsonrpc: "2.0", method: "evm_mine", params: [], id: 0})
 	},
 
   addMinutesOnEVM: async function(minutes) {
 		const addSeconds = 60 * 60 * 24 * minutes
-		const currentBlockTime = web3.eth.getBlock(web3.eth.blockNumber).timestamp
 		await web3.currentProvider.send({jsonrpc: "2.0", method: "evm_increaseTime", params: [addSeconds], id: 0})
 		await web3.currentProvider.send({jsonrpc: "2.0", method: "evm_mine", params: [], id: 0})
 	},
+
+  addSecondsOnEVM: async function(seconds) {
+		await web3.currentProvider.send({jsonrpc: "2.0", method: "evm_increaseTime", params: [seconds], id: 0})
+		await web3.currentProvider.send({jsonrpc: "2.0", method: "evm_mine", params: [], id: 0})
+	},
+
+  setTimestamp: async function(timestamp) {
+		const currentBlockTime = web3.eth.getBlock(web3.eth.blockNumber).timestamp
+    if (timestamp < currentBlockTime) {
+      throw Error(`Cannot increase current time(${currentBlockTime}) to a moment in the past(${timestamp})`)
+    }
+		const addSeconds = timestamp - currentBlockTime
+		await web3.currentProvider.send({jsonrpc: "2.0", method: "evm_increaseTime", params: [addSeconds], id: 0})
+		await web3.currentProvider.send({jsonrpc: "2.0", method: "evm_mine", params: [], id: 0})
+  }
 }
 
